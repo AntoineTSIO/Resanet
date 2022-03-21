@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% include "vueEntete.html" %}
+{% include "vueEnteteGestionnaire.html" %}
+
+<div>
+	<div class="titre">
+		<div class="row">
+			<div class="col-md"></div>
+			<div class="col-md-3">
+				<p class="alert alert-info" role="alert">Historique de la carte n°{% print matricule %}</p>
+			</div>
+		</div>
+	</div>
+
+
+    <div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Historique Carte N°{% print matricule %}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% L = [] %}
+				{% for i in range len(historiqueCarte) %}
+				{% L = historiqueCarte(i) %}
+				{% L = convertirDateISOversFR(L) %}
+				<tr>
+					<td>{% print historiqueCarte %}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+    </div>
+
+</div>
+
+<div>
+	<button type="button" class="btn btn-secondary" onclick="location.href='/gestionnaire/listePersonnel/avecCarte/'">Retour a la liste</button>
+</div>
+
+{% include "vuePied.html" %}

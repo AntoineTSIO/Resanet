@@ -15,8 +15,8 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Personnels<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-					  <li><a href="#">Personnels avec carte</a></li>
-					  <li><a href="#">Personnels sans carte</a></li>
+					  <li><a href="/gestionnaire/listePersonnel/avecCarte">Personnels avec carte</a></li>
+					  <li><a href="/gestionnaire/listePersonnel/sansCarte">Personnels sans carte</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -35,8 +35,8 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><p class="navbar-text">{{}}</p></li>
-				<li><a href="#">Se déconnecter</a></li>
+				<li><p class="navbar-text">{{session['prenom']}} {{session['nom']}}</p></li>
+				<li><a href="/gestionnaire/seDeconnecter">Se déconnecter</a></li>
             </ul>
 		</div>
 	</div>

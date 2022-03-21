@@ -1,15 +1,27 @@
 {% include "vueEntete.html" %}
 {% include "vueEnteteUsager.html" %}
 
+
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <div class="col-md-3">
+                <p class="alert alert-info" role="alert">Nous sommes le {% print lesDates[0]['fr'] %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+
 	<div class="row">
 		<div class="col-md-1"></div>
 	
 			{% for i in range(5) %}
-			
+
 				<div class="col-md-1">
-				
-					<a
+
+                   <a data-bs-toggle="tooltip" data-bs-placement="bottom"
 					
 						{% if lesDates[i]['reservee'] %}
 							href="/usager/reservations/annuler/{{ lesDates[i]['iso'] }}" 
@@ -22,10 +34,22 @@
 						{% if lesDates[i]['verrouillee'] %}
 							disabled="disabled"
 						{% endif %}
-					
+
+                        {%if i == 0%}
+                            title="Lundi"
+                        {%elif i == 1%}
+                            title="Mardi"
+                        {%elif i == 2%}
+                            title="Mercredi"
+                        {%elif i == 3%}
+                            title="Jeudi"
+                        {%elif i == 4%}
+                            title="Vendredi"
+                        {%endif%}
 					>
-					
-						{{ lesDates[i]['fr'] }}
+					    {{ lesDates[i]['fr'] }}
+
+
 					</a>
 				
 				</div>
@@ -43,8 +67,8 @@
 			{% for i in range(5,10) %}
 			
 				<div class="col-md-1">
-				
-					<a
+
+					<a data-bs-toggle="tooltip" data-bs-placement="bottom"
 					
 						{% if lesDates[i]['reservee'] %}
 							href="/usager/reservations/annuler/{{ lesDates[i]['iso'] }}" 
@@ -57,6 +81,18 @@
 						{% if lesDates[i]['verrouillee'] %}
 							disabled="disabled"
 						{% endif %}
+
+                        {%if i == 5%}
+                            title="Lundi"
+                        {%elif i == 6%}
+                            title="Mardi"
+                        {%elif i == 7%}
+                            title="Mercredi"
+                        {%elif i == 8%}
+                            title="Jeudi"
+                        {%elif i == 9%}
+                            title="Vendredi"
+                        {%endif%}
 					
 					>
 					
@@ -74,7 +110,7 @@
 	
 	<div class="row">
 		<div class="col-md-1"></div>
-		<div class="col-md-4">
+		<div class="col-md-10">
 			
 			{% if soldeInsuffisant == True %}
 				<p class="alert alert-danger" role="alert">Solde insuffisant</p>

@@ -1,0 +1,42 @@
+{% include "vueEntete.html" %}
+{% include "vueEnteteGestionnaire.html" %}
+
+<div>
+	<div class="titre">
+		<div class "row">
+			<div class="col-md"></div>
+			<div class="col-md-4">
+				<p class="alert alert-info" role="alert">Liste du personnel sans carte de restauration</p>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Matricule</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Prenom</th>
+					<th scope="col">Service</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for i in range (0, lenPersonnelSansCarte) %}
+				<tr>
+					<td>{% print personnelSansCarte[i]['matricule'] %}</td>
+					<td>{% print personnelSansCarte[i]['nom'] %}</td>
+					<td>{% print personnelSansCarte[i]['prenom'] %}</td>
+					<td>{% print personnelSansCarte[i]['nomService'] %}</td>
+
+					<td><button class="btn btn-success" onclick="location.href='/gestionnaire/listePersonnel/sansCarte/creerCarte/{{personnelSansCarte[i]['matricule']}}'">Créer Compte</button></td>
+
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
+{% include "vuePied.html" %}
